@@ -120,7 +120,7 @@ public class MasterMind {
 		System.out.println( "Num Impatient People : " + 
 				PersonImpl.getTotalImpatientPeople() );
 	}
-	
+	 
 	/**
 	 * Enqueue PersonArrives event into the event queue
 	 */
