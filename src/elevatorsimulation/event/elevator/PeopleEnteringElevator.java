@@ -69,8 +69,7 @@ public class PeopleEnteringElevator extends Event{
 		Set<PersonImpl> enteringPeople = elevator.peopleEnter( waitingPeople );
 		
 		level.removePeople( enteringPeople );
-		resetFloorButton( elevator, level );
-		
+		resetFloorButton(elevator, level);
 		System.out.println(enteringPeople.size() + 
 				" People Entering Elevator " + this.elevatorNumber );
 	}

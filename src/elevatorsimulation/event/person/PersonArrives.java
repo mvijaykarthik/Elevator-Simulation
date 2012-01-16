@@ -65,11 +65,12 @@ public class PersonArrives extends Event {
 	    
 	    // Destination should be different from source
 	    do {
-	    	destinationLevel = randomGenerator.nextInt(numFloors);
+	    	destinationLevel = randomGenerator.nextInt( numFloors );
 	    } while ( destinationLevel == sourceLevel );
 	    
-	    // Generate max Waiting time
-	    Integer maxWaitingTime = randomGenerator.nextInt(50) + 50;
+	    // Generate max Waiting time ( 3 to 4 times number of levels )
+	    Integer maxWaitingTime = randomGenerator.nextInt( acadBlock.getNumLevels() ) + 
+	    					3 * acadBlock.getNumLevels();
 	    
 	    // Create a new person
 		PersonImpl newPerson = new PersonImpl( sourceLevel, 

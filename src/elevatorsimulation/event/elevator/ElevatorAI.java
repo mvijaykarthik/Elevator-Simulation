@@ -28,7 +28,8 @@ public class ElevatorAI extends Event {
 	private Integer eventId;
 	private EventQueue eventQueue;
 	private double probElevatorFails;
-	
+	private static Integer elapsedTime = 0;
+
 	/**
 	 * Function to set eventId
 	 * @param eventId used to set the event id of this event
@@ -129,6 +130,7 @@ public class ElevatorAI extends Event {
 		 * Requeue this event. It must always remain in the event queue.
 		 */
 		this.eventQueue.addEventBack(this);
+		ElevatorAI.elapsedTime++;
 	}
 
 	/**
@@ -162,7 +164,6 @@ public class ElevatorAI extends Event {
 		
 		Elevator elevator = this.acadBlock.getElevator( elevatorNumber );
 		Integer currentFloor = elevator.getCurrentFloor();
-		Level level = this.acadBlock.getLevel(currentFloor);
 		SortedSet<Integer> allUpDirectionRequests = new TreeSet<Integer>();
 		SortedSet<Integer> allDownDirectionRequests = new TreeSet<Integer>();
 
@@ -179,7 +180,7 @@ public class ElevatorAI extends Event {
 		
 		// Check if elevator should open its doors at this level
 		if ( elevator.currentFloorButtonIsPressed() || 
-				level.buttonPressed ( elevator.getDirection() ) ) {
+				peopleWantToEnter ( elevator ) ) {
 			
 			// There are people who want to leave the elevator at this floor
 			if ( elevator.currentFloorButtonIsPressed() ) {
@@ -189,13 +190,13 @@ public class ElevatorAI extends Event {
 			}
 			
 			// There are people who want to enter the elevator at this floor
-			if ( level.buttonPressed( elevator.getDirection() ) ) {
+			if ( peopleWantToEnter ( elevator ) ) {
 				
 				// Enqueue an event to make people enter the elevator
 				enqueuePeopleEnteringElevator( elevatorNumber );
 				
-				// Other elevators need not stop here now
-				resetFloorButton( elevator.getDirection(), level );
+//				// Other elevators need not stop here now
+//				resetFloorButton( level );
 			}
 			
 			// Return after enqueueing an event to open door of elevator
@@ -252,19 +253,22 @@ public class ElevatorAI extends Event {
 	}
 
 	/**
-	 * Resets the floor button of the given level depending on direction
-	 * 
-	 * @param direction direction in which the lift is moving
-	 * @param level the level where the floor button needs to be reset
+	 * Returns whether people want to enter elevator at current floor
+	 * @param elevator the elevator which people might enter
+	 * @return whether people want to enter the elevator
 	 */
-	private void resetFloorButton(Direction direction, Level level) {
-		if ( direction == Direction.UP ) {
-			level.resetUpButton();
+	private boolean peopleWantToEnter( Elevator elevator ) {
+		Integer currentFloor = elevator.getCurrentFloor();
+		Level level = acadBlock.getLevel( currentFloor );
+		
+		if ( elevator.isEmpty() ) {
+			if ( level.buttonPressed( Direction.UP ) ||
+					level.buttonPressed( Direction.DOWN ) ) {
+				return true;
+			}
 		}
-
-		if ( direction == Direction.DOWN ) {
-			level.resetDownButton();
-		}
+		
+		return level.buttonPressed( elevator.getDirection() );
 	}
 
 	/**
@@ -356,6 +360,15 @@ public class ElevatorAI extends Event {
 		if ( moveTo != Direction.STATIONARY ) {
 			enqueueMove( elevatorNumber, moveTo );
 		}
+	}
+	
+	/**
+	 * Function to return total elapsed time.
+	 * 
+	 * @return total elapsed time
+	 */
+	public static Integer getElapsedTime() {
+		return elapsedTime;
 	}
 	
 	/**

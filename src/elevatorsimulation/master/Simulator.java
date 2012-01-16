@@ -19,16 +19,17 @@ public class Simulator {
 		Scanner sc = new Scanner( System.in );
 		// Prompt user for input
 		System.out.println( "Enter the number of floors, the number of \n" +
-				"elevators, and the number of iterations to simulate." );
+				"elevators, probability to create a person \nand amount " +
+				"of time to run simulation." );
 		// Get input from user
 		Integer numFloors = sc.nextInt();
 		Integer numElevators = sc.nextInt();
-//		Double probCreatingPerson = sc.nextDouble();
-		Integer numberOfIterations = sc.nextInt();
+		Double probCreatingPerson = sc.nextDouble();
+		Integer timeToSimulate = sc.nextInt();
 		
 		// Create a MasterMind class and start the simulation
 		MasterMind master = new MasterMind( numFloors, numElevators, 
-				numberOfIterations );
+				timeToSimulate , probCreatingPerson);
 		master.startSimulation();
 	}
 }

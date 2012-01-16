@@ -174,10 +174,11 @@ public class ElevatorImpl implements Elevator {
 	 * @return whether the person enters the elevator
 	 */
 	private Boolean willPersonEnterElevator ( Person p ) {
-		
+		//Return true if elevator is empty or
 		// If the elevator is stationary, the person enters the 
 		// elevator and sets it to go in the direction he wants.
-		if ( this.currentDirection == Direction.STATIONARY ) {
+		if ( this.currentDirection == Direction.STATIONARY || 
+				this.isEmpty() ) {
 			if ( p.getDestFloor() > this.currentFloor ) {
 				this.currentDirection = Direction.UP;
 				return true;
@@ -245,7 +246,15 @@ public class ElevatorImpl implements Elevator {
 	 */
 	@Override
 	public Boolean isFull() {
-		return ! ( this.peopleInLift.size() == ElevatorImpl.ELEVATOR_MAX_CAPACITY );
+		return ( this.peopleInLift.size() == ElevatorImpl.ELEVATOR_MAX_CAPACITY );
+	}
+	
+	/* (non-Javadoc)
+	 * @see datastructs.Elevator#isEmpty()
+	 */
+	@Override
+	public Boolean isEmpty() {
+		return ( this.peopleInLift.size() == 0 );
 	}
 	
 	/* (non-Javadoc)

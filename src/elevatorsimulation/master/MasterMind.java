@@ -22,7 +22,7 @@ public class MasterMind {
 	// Variable declarations are self explanatory
 	private Building acadBlock;
 	private EventQueue eventQueue;
-	private Integer numberOfIterations;
+	private Integer timeToSimulate;
 	private Double probCreatePerson;
 	
 	/**
@@ -34,10 +34,10 @@ public class MasterMind {
 	 * @param probCreatePerson probability with which a person is created
 	 */
 	public MasterMind ( Integer numFloors, Integer numElevators 
-			, Integer numberOfIterations, Double probCreatePerson ) {
+			, Integer timeToSimulate, Double probCreatePerson ) {
 		this.acadBlock = new BuildingImpl( numFloors, numElevators );
 		this.eventQueue = new EventQueue();
-		this.numberOfIterations = numberOfIterations;
+		this.timeToSimulate = timeToSimulate;
 		
 		// Check validity of probability
 		if ( probCreatePerson >= 0 && probCreatePerson <= 1 ) {
@@ -45,7 +45,7 @@ public class MasterMind {
 		}
 		
 		else {
-			this.probCreatePerson = 0.05;
+			this.probCreatePerson = 0.2;
 		}
 	}
 	
@@ -60,8 +60,8 @@ public class MasterMind {
 			, Integer numberOfIterations ) {
 		this.acadBlock = new BuildingImpl( numFloors, numElevators );
 		this.eventQueue = new EventQueue();
-		this.numberOfIterations = numberOfIterations;
-		this.probCreatePerson = 0.05;
+		this.timeToSimulate = numberOfIterations;
+		this.probCreatePerson = 0.3;
 	}
 	
 	/**
@@ -87,7 +87,11 @@ public class MasterMind {
 		this.eventQueue.addEventFront( elevatorAI );
 		Integer i = 0;
 
-		while ( i < this.numberOfIterations ) {
+		while ( ElevatorAI.getElapsedTime() < this.timeToSimulate ) {
+			System.out.println( "\nIter " + i );
+			System.out.println( "Time " + PersonImpl.getTotalWaitingTimeOfPeople() );
+			System.out.println( "Event queue size: " + 
+					this.eventQueue.size() );
 			this.eventQueue.printQueue();
 			Double randomNumber = Math.random();
 			
@@ -95,10 +99,6 @@ public class MasterMind {
 			if ( randomNumber <= this.probCreatePerson ){
 				enqueuePersonArrives();
 			}
-			
-			System.out.println( "\nIter " + i );
-			System.out.println( "Event queue size: " + 
-					this.eventQueue.size() );
 			
 			// Execute an event
 			this.eventQueue.executeAnEvent();
@@ -110,7 +110,7 @@ public class MasterMind {
 				this.acadBlock.getNumElevators() + " elevators, " +
 				this.acadBlock.getNumLevels() + " levels with " +
 				this.probCreatePerson + " probability \nto create a person, " +
-				"for " + this.numberOfIterations + " iterations");
+				"for " + this.timeToSimulate + " time instants");
 		System.out.println( "Total Created Events : " + 
 				Event.getNumCreatedEvents() );
 		System.out.println( "Average Waiting Time : " + 

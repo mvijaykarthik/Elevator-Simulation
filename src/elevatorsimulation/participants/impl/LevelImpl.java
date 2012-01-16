@@ -215,6 +215,8 @@ public class LevelImpl implements Level {
 	 */
 	@Override
 	public void updateButtons() {
+		this.resetDownButton();
+		this.resetUpButton();
  		for ( Person peopleIter : this.peopleWaitingInFloor ) {
  			peopleIter.updateFloorButton( this );
  		}

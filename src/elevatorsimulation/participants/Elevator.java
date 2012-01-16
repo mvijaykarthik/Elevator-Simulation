@@ -104,6 +104,11 @@ public interface Elevator {
 	public abstract Boolean isFull();
 
 	/**
+	 * Returns whether the elevator is empty
+	 * @return whether the elevator is empty
+	 */
+	public abstract Boolean isEmpty();
+	/**
 	 * People whose destination is elevators currentFloor will
 	 * leave the elevator. 
 	 *  
