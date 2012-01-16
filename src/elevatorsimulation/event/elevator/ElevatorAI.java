@@ -101,8 +101,9 @@ public class ElevatorAI extends Event {
 			
 				else {
 					// Enqueue an action for the elevator
-					System.out.println( "Elevator " + elevatorIter 
-							+ " " + elevator.getButtonsPressed() );
+					System.out.println( "Elevator " + elevatorIter + " " +
+							"Inside Buttons Presssed : " + 
+							elevator.getButtonsPressed() );
 					setAction( elevatorIter );
 				}
 			}
