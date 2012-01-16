@@ -27,7 +27,7 @@ public interface Building {
 	 * @param elevatorNumber specifies which elevator to return
 	 * @return the elevatorNumber th elevator
 	 */
-	public abstract Elevator getElevator(Integer elevatorNumber);
+	public abstract Elevator getElevator( Integer elevatorNumber );
 
 	/**
 	 * This function returns the levelNumber th floor of the 
@@ -36,7 +36,7 @@ public interface Building {
 	 * @param levelNumber specifies which floor to return
 	 * @return the levelNumber th floor
 	 */
-	public abstract Level getLevel(Integer levelNumber);
+	public abstract Level getLevel( Integer levelNumber );
 
 	/**
 	 * This function returns the number of floors in the building.
@@ -60,7 +60,7 @@ public interface Building {
 	 * @return the set of floors above currentFloor which have 
 	 *        requested an elevator
 	 */
-	public abstract SortedSet<Integer> getRequestsAbove(Integer currentFloor);
+	public abstract SortedSet<Integer> getRequestsAbove( Integer currentFloor );
 
 	/**
 	 * This function returns a set of floors below currentFloor 
@@ -71,6 +71,6 @@ public interface Building {
 	 * @return the set of floors below currentFloor which have 
 	 *        requested an elevator
 	 */
-	public abstract SortedSet<Integer> getRequestsBelow(Integer currentFloor);
+	public abstract SortedSet<Integer> getRequestsBelow( Integer currentFloor );
 
 }

@@ -29,7 +29,7 @@ public class Simulator {
 		
 		// Create a MasterMind class and start the simulation
 		MasterMind master = new MasterMind( numFloors, numElevators, 
-				timeToSimulate , probCreatingPerson);
+				timeToSimulate , probCreatingPerson );
 		master.startSimulation();
 	}
 }
