@@ -53,7 +53,7 @@ public interface Level {
 	 * @param p person to add to the set of people waiting for
 	 *        an elevator on this level
 	 */
-	public abstract void addPerson(PersonImpl p);
+	public abstract void addPerson( PersonImpl p );
 
 	/**
 	 * Add a set of people to the set of people waiting for an elevator
@@ -62,7 +62,7 @@ public interface Level {
 	 * @param setOfPeople Set of people to add to the set of people
 	 *        waiting for an elevator on this level
 	 */
-	public abstract void addPeople(Set<PersonImpl> setOfPeople);
+	public abstract void addPeople( Set<PersonImpl> setOfPeople );
 
 	/**
 	 * Remove a set of people from the set of people waiting for an elevator
@@ -71,7 +71,7 @@ public interface Level {
 	 * @param setOfPeople Set of people to remove from the set of people
 	 *        waiting for an elevator on this level
 	 */
-	public abstract void removePeople(Set<PersonImpl> setOfPeople);
+	public abstract void removePeople( Set<PersonImpl> setOfPeople );
 
 	/**
 	 * Removes a person from the set of people waiting for an elevator
@@ -118,7 +118,7 @@ public interface Level {
 	 * @return returns if the appropriate button in the floor is pressed
 	 *         ( see function description )
 	 */
-	public abstract boolean buttonPressed(Direction direction);
+	public abstract boolean buttonPressed( Direction direction );
 
 	/**
 	 * Update the upButton and downButton of the floor based on 

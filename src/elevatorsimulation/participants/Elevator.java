@@ -46,7 +46,7 @@ public interface Elevator {
 	 * @param destFloor the floor button which is required to be pressed
 	 *        in the elevator
 	 */
-	public abstract void pressButton(Integer destFloor);
+	public abstract void pressButton( Integer destFloor );
 
 	/**
 	 * Press a set of buttons in the elevator so that it stops in 
@@ -54,7 +54,7 @@ public interface Elevator {
 	 * 
 	 * @param allFloors A set of buttons to press in the elevator
 	 */
-	public abstract void pressButton(Set<Integer> allFloors);
+	public abstract void pressButton( Set<Integer> allFloors );
 
 	/**
 	 * Returns a boolean flag stating whether the elevator is operational
@@ -95,7 +95,7 @@ public interface Elevator {
 	 * @param enteringPeople : People who could potentially enter the elevator
 	 * @return Set of people who entered the elevator
 	 */
-	public abstract Set<PersonImpl> peopleEnter(Set<PersonImpl> enteringPeople);
+	public abstract Set<PersonImpl> peopleEnter( Set<PersonImpl> enteringPeople );
 
 	/**
 	 * Returns whether the elevator is full

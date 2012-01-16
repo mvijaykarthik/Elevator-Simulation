@@ -76,7 +76,7 @@ public class LevelImpl implements Level {
 	 */
  	@Override
 	public void pushUpButton() {
-		this.setUpButton(true);
+		this.setUpButton( true );
 	}
 
  	/* (non-Javadoc)
@@ -84,7 +84,7 @@ public class LevelImpl implements Level {
 	 */
  	@Override
 	public void resetUpButton() {
-		this.setUpButton(false);
+		this.setUpButton( false );
 	}
 
  	/* (non-Javadoc)
@@ -92,7 +92,7 @@ public class LevelImpl implements Level {
 	 */
  	@Override
 	public void pushDownButton() {
-		this.setDownButton(true);
+		this.setDownButton( true );
 	}
 
  	/* (non-Javadoc)
@@ -100,7 +100,7 @@ public class LevelImpl implements Level {
 	 */
  	@Override
 	public void resetDownButton() {
-		this.setDownButton(false);
+		this.setDownButton( false );
 	}
 
  	/* (non-Javadoc)
@@ -161,7 +161,7 @@ public class LevelImpl implements Level {
  			}
  		}
  		
- 		this.peopleWaitingInFloor.removeAll(peopleToRemove);
+ 		this.peopleWaitingInFloor.removeAll( peopleToRemove );
  	}
 
  	/* (non-Javadoc)
@@ -194,7 +194,7 @@ public class LevelImpl implements Level {
 	 * @see datastructs.Level#buttonPressed(datastructs.Direction)
 	 */
 	@Override
-	public boolean buttonPressed(Direction direction) {
+	public boolean buttonPressed( Direction direction ) {
 		if ( direction == Direction.STATIONARY ) {
 			return ( this.upButton || this.downButton );
 		}

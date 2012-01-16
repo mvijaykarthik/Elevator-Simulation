@@ -81,7 +81,7 @@ public class BuildingImpl implements Building {
 		
 		// If elevator does not exist, print an error
 		else {
-			System.out.println("Elevator " + elevatorNumber + " does not exist.");
+			System.out.println( "Elevator " + elevatorNumber + " does not exist." );
 			return null;
 		}
 	}
@@ -99,7 +99,7 @@ public class BuildingImpl implements Building {
 		
 		// If floor does not exist, print an error
 		else {
-			System.out.println("Level " + levelNumber + " does not exist.");
+			System.out.println( "Level " + levelNumber + " does not exist." );
 			return null;
 		}
 	}
@@ -132,7 +132,7 @@ public class BuildingImpl implements Building {
 		// the floor buttons are pressed
 		for ( floorIter = currentFloor + 1; floorIter < this.floorList.size();
 				floorIter++ ) {
-			Level level = this.floorList.get(floorIter);
+			Level level = this.floorList.get( floorIter );
 			if ( level.getDownButton() || level.getUpButton() ) {
 				elevatorRequest.add( floorIter );
 			}

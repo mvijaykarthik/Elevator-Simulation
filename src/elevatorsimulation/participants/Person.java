@@ -41,7 +41,7 @@ public interface Person {
 	 * elevator
 	 * 
 	 * @param level the level at which the person is waiting
-	 */
-	public abstract void updateFloorButton(Level level);
+	 */ 
+	public abstract void updateFloorButton( Level level );
 
 }
