@@ -30,7 +30,7 @@ public class MasterMind {
 	 * Creates a building and an empty eventQueue
 	 * @param numFloors number of floors in the building
 	 * @param numElevators number of elevators in the building
-	 * @param numberOfIterations number of iterations to run the simulation
+	 * @param timeToSimulate amount of time to run the simulation
 	 * @param probCreatePerson probability with which a person is created
 	 */
 	public MasterMind ( Integer numFloors, Integer numElevators 
