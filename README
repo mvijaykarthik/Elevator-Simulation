@@ -2,6 +2,19 @@
 |   Name : M Vijay Karthik                  |
 |   Roll No : CS09B050                      |
 |   Course : CS3400 Software Engineering    |
-|    Topic : Elevator Simulation            |
-|    Run Simulator.java in Package 'master' |
+|   Topic : Elevator Simulation             |
 ********************************************/
+
+To run the simulation, compile and run Simulator.java in Package 'master' .
+There are in all 3 packages. 
+
+Package event has 2 subpackages, one for elevator related events, and
+one for person related events.
+
+Package master has the classes necessary to handle the simulation 
+( like managing the event queue )
+
+Package participants has the participants of the simulation ( like building,
+elevator, person ) . The implementation of these interfaces are there in 
+a subpackage impl.
+
